@@ -7,7 +7,7 @@
       "handle": "filesystem"
     },
     {
-      "src": "/public/(.*)",
+      "src": "/.*",
       "dest": "/index.html"
     }
   ]

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>交通 API</title>
-    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/css/rwd.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/rwd.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="brand-logo" src="/public/assets/TrafficLogo.png" alt="Traffic API Logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#"><img class="brand-logo" src="/assets/TrafficLogo.png" alt="Traffic API Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -27,12 +27,12 @@
                     </li>
                 </ul>
             </div>
-            </div>  
+            </div>
         </nav>
 
 <main class="container app-shell mt-4 mt-lg-5 pt-4 pt-lg-5">
 <section class="hero-section mb-5">
-    <img class="hero-logo" src="/public/assets/TrafficLogo.png" alt="Traffic API Logo">
+    <img class="hero-logo" src="/assets/TrafficLogo.png" alt="Traffic API Logo">
     <h4 class="text-center hero-copy">歡迎來到交通 API 查詢頁面，您可以在這邊查詢到您想要的運輸資料！</h4>
 </section>
     <div id="railwayInput" class="input form-panel">
@@ -56,13 +56,13 @@
             <span class="input-group-text" id="basic-addon1">日期</span>
             <input id="railwayDate" type="date" class="form-control" name="selyourtakedate"/>
 
-        </div> 
+        </div>
         <div class="input-group mb-3 time-range-group">
             <span class="input-group-text" id="basic-addon1">時段起迄</span>
             <input id="railwayStartTime" type="time" class="form-control"/>
             <span class="time-separator">~</span>
             <input id="railwayEndTime" type="time" class="form-control"/>
-        </div> 
+        </div>
         <div class="input-group mb-3">
             <button id="railwaySubmit" type="submit" class="btn btn-primary">提交</button>
         </div>
@@ -101,12 +101,12 @@
             <select id="hsrEndStation" class="form-select" aria-label="高鐵抵達站選單">
                 <option selected disabled>請選擇抵達站</option>
             </select>
-        </div> 
+        </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">出發日期</span>
             <input id="hsrDate" type="date" class="form-control" name="selyourtakedate"/>
 
-        </div> 
+        </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">出發時間</span>
             <input id="hsrTime" type="time" class="form-control"/>
@@ -117,7 +117,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             </div>
-          </div> 
+          </div>
         <div class="input-group mb-3">
             <button id="hsrSubmit" type="submit" class="btn btn-primary">提交</button>
         </div>
@@ -164,7 +164,7 @@
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">關鍵字</span>
             <input id="airKeyword" type="text" class="form-control" placeholder="可輸入航班編號或航空公司代碼" aria-label="航空關鍵字" aria-describedby="basic-addon1">
-        </div> 
+        </div>
         <div class="input-group mb-3">
             <button type="submit" id="airSubmit" class="btn btn-primary">提交</button>
         </div>
@@ -192,9 +192,9 @@
         </div>
     </div>
 </main>
-    <script src="/public/js/popper.min.js"></script>
-    <script src="/public/js/bootstrap.min.js"></script>
-    <script src="/public/js/traffic.js"></script>
-    <script src="/public/js/ullist.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/traffic.js"></script>
+    <script src="/js/ullist.js"></script>
 </body>
 </html>
