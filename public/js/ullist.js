@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", function (){
     railInput.style.display = "none"        
     hsrInput.style.display = "none"
     airInput.style.display = "none"
-
-    document.getElementById(sectionID).railInput.style.display = "none"
 });
 
 

@@ -54,27 +54,32 @@
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">日期</span>
-            <input type="date" class="form-control" name="selyourtakedate"/>
+            <input id="railwayDate" type="date" class="form-control" name="selyourtakedate"/>
 
         </div> 
         <div class="input-group mb-3 time-range-group">
             <span class="input-group-text" id="basic-addon1">時段起迄</span>
-            <input type="time" class="form-control"/>
+            <input id="railwayStartTime" type="time" class="form-control"/>
             <span class="time-separator">~</span>
-            <input type="time" class="form-control"/>
+            <input id="railwayEndTime" type="time" class="form-control"/>
         </div> 
         <div class="input-group mb-3">
-            <button id="submit" type="submit" class="btn btn-primary">提交</button>
+            <button id="railwaySubmit" type="submit" class="btn btn-primary">提交</button>
         </div>
 
+        <div id="railwayMessage" class="mb-3"></div>
+
          <div class="results-table-wrap">
-            <table class="table" style="display: none;">
+            <table id="railwayResultsTable" class="table" style="display: none;">
                 <thead>
                     <tr>
-                    <th scope="col">出發站</th>
-                    <th scope="col">到達站</th>
+                    <th scope="col">車次</th>
+                    <th scope="col">車種</th>
+                    <th scope="col">起站</th>
+                    <th scope="col">迄站</th>
                     <th scope="col">出發日期</th>
                     <th scope="col">出發時間</th>
+                    <th scope="col">抵達時間</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -87,24 +92,24 @@
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">出發站</span>
-            <select class="form-select" aria-label="Default select example"><option selected>出發站</option><option value="1"></option>
+            <select id="hsrStartStation" class="form-select" aria-label="高鐵出發站選單">
+                <option selected disabled>請選擇出發站</option>
             </select>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">抵達站</span>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>抵達站</option>
-                <option value="1"></option>
+            <select id="hsrEndStation" class="form-select" aria-label="高鐵抵達站選單">
+                <option selected disabled>請選擇抵達站</option>
             </select>
         </div> 
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">出發日期</span>
-            <input type="date" class="form-control" name="selyourtakedate"/>
+            <input id="hsrDate" type="date" class="form-control" name="selyourtakedate"/>
 
         </div> 
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">出發時間</span>
-            <input type="time" class="form-control"/>
+            <input id="hsrTime" type="time" class="form-control"/>
         </div>
         <div class="input-group dropdown mb-3">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,7 +119,26 @@
             </div>
           </div> 
         <div class="input-group mb-3">
-            <button type="submit" class="btn btn-primary">提交</button>
+            <button id="hsrSubmit" type="submit" class="btn btn-primary">提交</button>
+        </div>
+
+        <div id="hsrMessage" class="mb-3"></div>
+
+        <div class="results-table-wrap">
+            <table id="hsrResultsTable" class="table" style="display: none;">
+                <thead>
+                    <tr>
+                    <th scope="col">車次</th>
+                    <th scope="col">車種</th>
+                    <th scope="col">起站</th>
+                    <th scope="col">迄站</th>
+                    <th scope="col">出發日期</th>
+                    <th scope="col">出發時間</th>
+                    <th scope="col">抵達時間</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </div>
     <div id="AirInput" class="input form-panel">
@@ -123,14 +147,48 @@
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">出發</span>
-            <input type="text" class="form-control" placeholder="請輸入航班編號/航空公司/城市" aria-label="text" aria-describedby="basic-addon1">
+            <select id="airDepartureAirport" class="form-select" aria-label="航空出發機場選單">
+                <option selected disabled>請選擇出發機場</option>
+            </select>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">抵達</span>
-            <input type="text" class="form-control" placeholder="請輸入航班編號/航空公司/城市" aria-label="text" aria-describedby="basic-addon1">
+            <select id="airArrivalAirport" class="form-select" aria-label="航空抵達機場選單">
+                <option selected disabled>請選擇抵達機場</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">日期</span>
+            <input id="airFlightDate" type="date" class="form-control" aria-label="航空日期">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">關鍵字</span>
+            <input id="airKeyword" type="text" class="form-control" placeholder="可輸入航班編號或航空公司代碼" aria-label="航空關鍵字" aria-describedby="basic-addon1">
         </div> 
         <div class="input-group mb-3">
-            <button type="submit" id="submit" class="btn btn-primary">提交</button>
+            <button type="submit" id="airSubmit" class="btn btn-primary">提交</button>
+        </div>
+
+        <div id="airMessage" class="mb-3"></div>
+
+        <div class="results-table-wrap">
+            <table id="airResultsTable" class="table" style="display: none;">
+                <thead>
+                    <tr>
+                    <th scope="col">航班編號</th>
+                    <th scope="col">航空公司</th>
+                    <th scope="col">出發機場</th>
+                    <th scope="col">抵達機場</th>
+                    <th scope="col">航班日期</th>
+                    <th scope="col">預定起飛</th>
+                    <th scope="col">實際/預估起飛</th>
+                    <th scope="col">航廈</th>
+                    <th scope="col">登機門</th>
+                    <th scope="col">狀態</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </div>
 </main>
