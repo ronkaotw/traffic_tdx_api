@@ -1,6 +1,5 @@
 const BASE_URL = "https://tdx.transportdata.tw/api/basic";
 
-// 取得金鑰
 async function getAccessToken() {
   const res = await fetch(
     "https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token",
@@ -18,7 +17,6 @@ async function getAccessToken() {
   return data.access_token;
 }
 
-// 鐵道查詢
 async function connTDX() {
   try {
     const token = await getAccessToken();
@@ -34,7 +32,7 @@ async function connTDX() {
     if (!res.ok) throw new Error(`HTTP Error ${res.status}`);
 
     const data = await res.json();
-    getHtmlData(data);  // 呼叫渲染
+    getHtmlData(data);
   } catch (err) {
     console.error("渲染錯誤:", err.message);
   }
@@ -42,7 +40,6 @@ async function connTDX() {
 
 connTDX();
 
-// 顯示站牌名稱
 function getHtmlData(stations) {
   const startSelect = document.getElementById("startStation");
   const endSelect = document.getElementById("endStation");
@@ -60,4 +57,62 @@ function getHtmlData(stations) {
   });
 }
 
+async function searchTrains(event) {
+  event.preventDefault();
 
+  const startStation = document.getElementById("startStation").value;
+  const endStation = document.getElementById("endStation").value;
+  const departDate = document.querySelector("input[type='date']").value;
+  const timeInputs = document.querySelectorAll("input[type='time']");
+  const startTime = timeInputs[0].value;
+  const endTime = timeInputs[1].value;
+
+  if (!startStation || !endStation || !departDate || !startTime || !endTime) {
+    alert("請完整選擇出發站、到達站、日期和時間");
+    return;
+  }
+
+  try {
+    const token = await getAccessToken();
+    const res = await fetch(`${BASE_URL}/v2/Rail/TRA/DailyTimetable/OD/${startStation}/to/${endStation}/${departDate}?%24format=JSON`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const trains = await res.json();
+    renderTable(trains, departDate, startTime, endTime);
+  } catch (err) {
+    console.error("查詢班次錯誤:", err.message);
+  }
+}
+
+function renderTable(trains, date, startTime, endTime) {
+  const table = document.querySelector("table");
+  const tbody = table.querySelector("tbody");
+  tbody.innerHTML = "";
+
+  const filtered = trains.filter(train => {
+    const depart = train.OriginStopTime[0].DepartureTime;
+    return depart >= startTime && depart <= endTime;
+  });
+
+  if (filtered.length === 0) {
+    alert("查無符合時間的列車");
+    table.style.display = "none";
+    return;
+  }
+
+  filtered.forEach(train => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${train.OriginStopTime[0].StationName.Zh_tw}</td>
+      <td>${train.DestinationStopTime[0].StationName.Zh_tw}</td>
+      <td>${date}</td>
+      <td>${train.OriginStopTime[0].DepartureTime}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  table.style.display = "table";
+}
+
+document.getElementById("submit").addEventListener("click", searchTrains);
+loadStations();

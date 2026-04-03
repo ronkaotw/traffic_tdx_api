@@ -1,0 +1,129 @@
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(13, 110, 253, 0.18), transparent 32%),
+        linear-gradient(180deg, #0a1630 0%, #10213f 48%, #132849 100%);
+}
+
+.app-shell {
+    padding-bottom: 3rem;
+}
+
+.brand-logo {
+    width: clamp(160px, 28vw, 300px);
+    height: auto;
+}
+
+.nav-gap {
+    gap: 0.5rem;
+}
+
+.hero-section {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: center;
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.hero-logo {
+    width: min(100%, 360px);
+    height: auto;
+}
+
+.hero-copy {
+    max-width: 42rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.form-panel {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+.section-title {
+    margin: 0;
+}
+
+.results-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.time-range-group {
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.time-separator {
+    flex: 0 0 auto;
+    font-weight: 600;
+}
+
+.input-group-text {
+    white-space: nowrap;
+}
+
+.btn {
+    min-width: 7rem;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding-top: 1rem;
+    }
+
+    .navbar-nav {
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .app-shell {
+        padding-bottom: 2rem;
+    }
+
+    .hero-section,
+    .form-panel {
+        padding: 1.25rem;
+        border-radius: 1rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input-group > .input-group-text,
+    .input-group > .form-select,
+    .input-group > .form-control,
+    .input-group > .btn,
+    .input-group > .dropdown-toggle {
+        width: 100%;
+        border-radius: 0.75rem;
+    }
+
+    .time-range-group {
+        gap: 0.5rem;
+    }
+
+    .time-separator {
+        align-self: center;
+    }
+
+    .btn {
+        min-width: 100%;
+    }
+
+    .table {
+        min-width: 36rem;
+    }
+}
